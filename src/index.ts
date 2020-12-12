@@ -47,8 +47,8 @@ async function main() {
                     throw new Error(`Missing Equipment ${ slotType } ${ tier }.`);
                 }
                 const id = parseInt(entry['@_type'], 16);
+                equipments.push({ id, tier, slotType, name: entry['@_id'] });
             }
-            equipments.push({ id, tier, slotType, name: entry['@_id'] });
         }
     }
 
