@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { parse } from 'fast-xml-parser';
-import { EAbilitySlot, EArmorSlot, Equipment, EWeaponSlot, IXmlEquipment } from './types';
+import { EAbilitySlot, EArmorSlot, IEquipment, EWeaponSlot, IXmlEquipment } from './types';
 import * as fs from 'fs';
 
 async function main() {
@@ -8,7 +8,7 @@ async function main() {
     const parsedXml = parse(xmlReq.data, { ignoreAttributes: false });
     const gameObjects: any[] = parsedXml.Objects.Object;
 
-    const equipments: Equipment[] = [];
+    const equipments: IEquipment[] = [];
     const menu: [
         [ EWeaponSlot[], number, number ],
         [ EAbilitySlot[], number, number ],

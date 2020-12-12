@@ -27,7 +27,7 @@ interface IGameItem {
     id: number;
 }
 
-export interface Equipment extends IGameItem {
+export interface IEquipment extends IGameItem {
     tier: number,
     slotType: EEquipmentSlot,
     name: string,
