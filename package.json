@@ -4,7 +4,8 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
-    "run": "ts-node src/index.ts",
+    "getEquipments": "ts-node src/getEquipments.ts",
+    "getGameObjectIds": "ts-node src/getGameObjectIds.ts",
     "npm update all": "npm update --save/--save-dev"
   },
   "typings": "typings/nhentai-api.d.ts",

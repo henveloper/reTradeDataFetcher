@@ -1,12 +1,9 @@
-import axios from 'axios';
-import { parse } from 'fast-xml-parser';
-import { EAbilitySlot, EArmorSlot, IEquipment, EWeaponSlot, IXmlEquipment } from './types';
+import { EAbilitySlot, EArmorSlot, EWeaponSlot, IEquipment, IXmlEquipment } from './types';
 import * as fs from 'fs';
+import { getGameObjects } from './utils';
 
 async function main() {
-    const xmlReq = await axios.get('https://static.drips.pw/rotmg/production/current/xmlc/Objects.xml');
-    const parsedXml = parse(xmlReq.data, { ignoreAttributes: false });
-    const gameObjects: any[] = parsedXml.Objects.Object;
+    const gameObjects = await getGameObjects();
 
     const equipments: IEquipment[] = [];
     const menu: [
@@ -38,6 +35,8 @@ async function main() {
             13,
         ]
     ];
+
+    console.log(gameObjects.filter(o => o.SlotType === 1));
 
     for (const [ slotTypes, minTier, maxTier ] of menu) {
         for (const slotType of slotTypes) {
